@@ -4,8 +4,14 @@ Returns: a List of integers
 '''
 def product_of_all_other_numbers(arr):
     # Your code here
+    i = 0
+    n = len(arr) - 1
 
-    pass
+    while i <= n:
+        for i in range(len(arr)):
+            pdt = [i * (i+1)]
+            i +=1
+
 
 
 if __name__ == '__main__':
