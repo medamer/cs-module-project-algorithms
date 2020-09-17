@@ -2,23 +2,19 @@
 Input: an integer
 Returns: an integer
 '''
-def eating_cookies(n):
+def eating_cookies(n, cache=None):
     # Your code here
-    if n != 0:
-        _3 = n // 3
-        r = n - (_3 * 3)
-        num = _3
-        #breakpoint()
-
-        _2 = r // 2
-        r = r - (_2 * 2)
-        num += _2
-
-        _1 = r // 1
-        #r = _1 - int(1)
-        num += _1
-
-    return num
+    if n < 0:
+        return 0
+    elif n == 0:
+        return 1
+    elif cache and cache[n] > 0:
+        return cache[n]
+    else:
+        if not cache:
+            cache = {i: 0 for i in range(n+1)}
+        cache[n] = eating_cookies(n-1, cache) + eating_cookies(n-2, cache) + eating_cookies(n-3, cache)
+    return cache[n]
 
 
 if __name__ == "__main__":
