@@ -4,8 +4,14 @@ Returns: an integer
 '''
 def single_number(arr):
     # Your code here
-
-    pass
+    for i in range(len(arr)):
+        if arr[i] in arr[i+1:]:
+            i+=1
+        elif arr[i] in arr[:i]:
+            i+=1
+        else:
+            return arr[i]
+    return arr[i]
 
 
 if __name__ == '__main__':
